@@ -1,3 +1,8 @@
+import fs from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 import http from "node:http";
 import url from "node:url";
 import { db, initDatabase } from "./database.js";
@@ -418,8 +423,7 @@ const server = http.createServer(async (req, res) => {
     }
 
     // Phục vụ giao diện React (thư mục dist) khi đưa lên mạng
-    const fs = require("fs");
-    const path = require("path");
+
     const distDir = path.join(__dirname, "../dist");
     let filePath = path.join(distDir, pathname === "/" ? "index.html" : pathname);
 
